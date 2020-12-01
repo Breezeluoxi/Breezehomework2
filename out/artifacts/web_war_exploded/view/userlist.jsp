@@ -102,7 +102,7 @@
                 </td>
                 <td class="textTd" id="userName">${user.userName}</td>
                 <td class="textTd" id="userLiske">${user.userAge}</td>
-                <td class="textTd"><a href=""><input type="button" value="删除"></a></td>
+                <td class="textTd"><a href="delUser?userId=${user.userID}"><input type="button" value="删除"></a></td>
                 <td class="textTd"><a href="modPer?userId=${user.userID}"><input type="button" value="修改"></a></td>
             </tr>
         </c:forEach>

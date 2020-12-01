@@ -9,6 +9,18 @@ public class User {
     String userLike="";
     String userPicUrl="";
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", userName='" + userName + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                ", userGender='" + userGender + '\'' +
+                ", userAge='" + userAge + '\'' +
+                ", userLike='" + userLike + '\'' +
+                ", userPicUrl='" + userPicUrl + '\'' +
+                '}';
+    }
 
     public User() {
     }

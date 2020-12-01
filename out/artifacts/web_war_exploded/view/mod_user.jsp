@@ -60,61 +60,47 @@
     }
 </style>
 <body>
-<h1 align="center">请认真填写你的注册信息</h1>
+<h1 align="center">你好吖！${requestScope.user.userName}</h1>
 <table id="my" width="700" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse" align="center">
     <tbody align="left" id="myta">
-    <form action="/web_war_exploded/modUser" method="post" enctype="multipart/form-data">
+    <form action="/web_war_exploded/modUser?userId=${requestScope.user.userID}" method="post" >
         <tr>
             <td>
                 请输入你的用户名：
-                <input type="text" name="txtName" maxlength="10" value="${requestScope.userName}">
+                <input type="text" name="txtName" maxlength="10" value="${requestScope.user.userName}">
                 (10个字符以内)
             </td>
         </tr>
         <tr>
             <td>
                 请输入你的密码：
-                <input type="password" name="txtPW" maxlength="15" value="${requestScope.userPwd}">
+                <input type="password" name="txtPW" maxlength="15" value="${requestScope.user.userPwd}">
                 (15个字符以内)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                请选择你的性别：
-                <input type="radio" name="gender" value="男">
-                男 &nbsp;
-                <input type="radio" name="gender" value="女">
-                女
             </td>
         </tr>
         <tr>
             <td>
                 年龄：
                 <select name="selH">
-                    <option value="00后" <c:if test="${user.userAge=='00后'}">selected</c:if>>00后</option>
-                    <option value="90后" <c:if test="${user.userAge=='90后'}">selected</c:if>>90后</option>
-                    <option value="70后" <c:if test="${user.userAge=='70后'}">selected</c:if>>70后</option>
-                    <option value="60后" <c:if test="${user.userAge=='60后'}">selected</c:if>>60后</option>
-                    <option value="其他" <c:if test="${user.userAge=='其他'}">selected</c:if>>其他</option>
+                    <option value="00后" <c:if test="${requestScope.user.userAge=='00后'}">selected</c:if>>00后</option>
+                    <option value="90后" <c:if test="${requestScope.user.userAge=='90后'}">selected</c:if>>90后</option>
+                    <option value="70后" <c:if test="${requestScope.user.userAge=='70后'}">selected</c:if>>70后</option>
+                    <option value="60后" <c:if test="${requestScope.user.userAge=='60后'}">selected</c:if>>60后</option>
+                    <option value="其他" <c:if test="${requestScope.user.userAge=='其他'}">selected</c:if>>其他</option>
                 </select>
             </td>
         </tr>
         <tr>
             <td>
                 请输入你的爱好：
-                <input type="checkbox" name="txtLOVE" value="阅读" <c:if test="${userLikes.isContain('阅读')}">checked</c:if>>
+                <input type="checkbox" name="txtLOVE" value="阅读" <c:if test="${requestScope.userLikes.contains('阅读')}">checked</c:if>>
                 阅读&nbsp;
-                <input type="checkbox" name="txtLOVE" value="音乐" <c:if test="${userLikes.isContain('音乐')}">checked</c:if> >
+                <input type="checkbox" name="txtLOVE" value="音乐" <c:if test="${requestScope.userLikes.contains('音乐')}">checked</c:if> >
                 音乐&nbsp;
-                <input type="checkbox" name="txtLOVE" value="运动" <c:if test="${userLikes.isContain('运动')}">checked</c:if>>
+                <input type="checkbox" name="txtLOVE" value="运动" <c:if test="${requestScope.userLikes.contains('运动')}">checked</c:if>>
                 运动&nbsp;
-                <input type="checkbox" name="txtLOVE" value="其他" <c:if test="${userLikes.isContain('其他')}">checked</c:if> >
+                <input type="checkbox" name="txtLOVE" value="其他" <c:if test="${requestScope.userLikes.contains('其他')}">checked</c:if> >
                 其他&nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                上传头像:<input type="file" name="uPhoto"><br/>
             </td>
         </tr>
         <tr>

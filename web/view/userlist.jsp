@@ -102,7 +102,7 @@
                 </td>
                 <td class="textTd" id="userName">${user.userName}</td>
                 <td class="textTd" id="userLiske">${user.userAge}</td>
-                <td class="textTd"><a href=""><input type="button" value="删除"></a></td>
+                <td class="textTd"><a href="delUser?userId=${user.userID}"><input type="button" value="删除"></a></td>
                 <td class="textTd"><a href="modPer?userId=${user.userID}"><input type="button" value="修改"></a></td>
             </tr>
         </c:forEach>
@@ -111,7 +111,7 @@
                 <a href="/web_war_exploded/userList?pageIndex=${(pageIndex-1)<1?1:(pageIndex-1)}">上一页</a>
             </td>
             <td>
-                第1页
+                第${pageIndex}页
             </td>
             <td colspan="2">
                 <a href="/web_war_exploded/userList?pageIndex=${(pageIndex+1)>pageCount?pageCount:(pageIndex+1)}">下一页</a>

@@ -10,7 +10,7 @@ public interface UserService {
     public void addUser(User user);
     public int getUserCount();
     public List<User> getUserList(int start,int num);
-    public int deleteUser(int userId);
+    public int deleteUser(Long userId);
     public User queryUser(Long id);
     public int updateUser(User user);
 }

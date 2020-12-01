@@ -51,10 +51,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public int deleteUser(int userId) throws SQLException {
+    public int deleteUser(Long userId) throws SQLException {
         Connection connection = JDBCUtils.getConnection();
         PreparedStatement statement = connection.prepareStatement("delete from user where userID=?");
-        statement.setInt(1,userId);
+        statement.setLong(1,userId);
         int i = statement.executeUpdate();
         JDBCUtils.close(connection,statement);
         return i;
@@ -78,7 +78,7 @@ public class UserDaoImpl implements UserDao {
     public int updateUser(User user) throws SQLException {
         Connection connection = JDBCUtils.getConnection();
         PreparedStatement statement = connection.prepareStatement("update user set userName=?,userPwd=?,userGrender=?,userAge=?,UserLike=?,userPicUrl=? where userID=?");
-        setUserInfo(user, statement);
+        setUserInfo(user, statement,0);
         statement.setLong(7,user.getUserID());
         int i= statement.executeUpdate();
         JDBCUtils.close(connection,statement);
@@ -101,5 +101,13 @@ public class UserDaoImpl implements UserDao {
         statement.setString(5,user.getUserAge());
         statement.setString(6,user.getUserLike());
         statement.setString(7,user.getUserPicUrl());
+    }
+    private void setUserInfo(User user, PreparedStatement statement,int not) throws SQLException {
+        statement.setString(1,user.getUserName());
+        statement.setString(2,user.getUserPwd());
+        statement.setString(3,user.getUserGender());
+        statement.setString(4,user.getUserAge());
+        statement.setString(5,user.getUserLike());
+        statement.setString(6,user.getUserPicUrl());
     }
 }

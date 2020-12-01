@@ -11,7 +11,7 @@ public interface UserDao {
     public void addUser(User user) throws SQLException;
     public int getUserCount() throws SQLException;
     public List<User> getUserList(int start,int num) throws SQLException;
-    public int deleteUser(int userId) throws SQLException;
+    public int deleteUser(Long userId) throws SQLException;
     public User queryUser(Long id) throws SQLException;
     public int updateUser(User user) throws SQLException;
 }
